@@ -1,4 +1,4 @@
-#include "../inc/judgeEndian.h"
+#include "../inc/byteorder5_1.h"
 
 // 判断机器字节序
 
