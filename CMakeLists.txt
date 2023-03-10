@@ -10,11 +10,12 @@ project(myTinyWebserver)
 # 添加头路径
 include_directories({CMAKE_CURRENT_LIST_DIR}/inc)
 
-# 添加源文件路径，并将其保存在变量source_path中
-aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src source_path)
+# 添加源文件路径，并将其保存在变量source_path中(递归查找)
+file(GLOB_RECURSE SRC_DIR_LIST "src/*.cpp" "src/*.c")
+# aux_source_directory(${CMAKE_CURRENT_LIST_DIR}/src source_path)
 
 # 指定生成目标，引用source_path变量
-add_executable(${PROJECT_NAME} ${source_path})
+add_executable(${PROJECT_NAME} ${SRC_DIR_LIST})
 
 # 显式指定编译器
 set(CMAKE_CXX_COMPILER "g++")

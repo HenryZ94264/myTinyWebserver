@@ -9,7 +9,6 @@
                 "type": "cppdbg",
                 "request": "launch",
                 "program": "${workspaceRoot}/build/myTinyWebserver",
-                "args": [],
                 "stopAtEntry": false,
                 "cwd": "${workspaceFolder}",
                 "environment": [],
@@ -27,7 +26,8 @@
                     //     "text": "-gdb-set disassembly-flavor intel",
                     //     "ignoreFailures": true
                     // }
-                ]
+                ],
+                "args": ["172.28.241.110", "12345", "2"],
         }
     ]
 }
