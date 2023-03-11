@@ -1,15 +1,15 @@
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <assert.h>
-#include <iostream>
-#include <unistd.h>
-#include <cstdlib>
-#include <errno.h>
-#include <cstring>
-#include <stdio.h>
+// #include <sys/socket.h>
+// #include <netinet/in.h>
+// #include <arpa/inet.h>
+// #include <assert.h>
+// #include <iostream>
+// #include <unistd.h>
+// #include <cstdlib>
+// #include <errno.h>
+// #include <cstring>
+// #include <stdio.h>
 
-// socket 接受一个异常连接，远端socket连接到端口后，立刻断开连接，服务器会显示CLOSE_WAIT，但是依然能够接受这个异常的连接
+// // socket 接受一个异常连接，远端socket连接到端口后，立刻断开连接，服务器会显示CLOSE_WAIT，但是依然能够接受这个异常的连接
 
 
 // int main(int argc, char* argv[])
@@ -53,7 +53,7 @@
 //     }
 
 //     //暂停20秒，等待客户端连接和相关操作（掉线或退出）
-//     sleep(20);
+//     // sleep(20);
 //     // 获取远端socket地址
 //     /* 结论：accetp只是从监听队列中取出连接，而不论连接处于何种状态，更不关心任何网络状况的变化*/
 //     struct sockaddr_in client;
