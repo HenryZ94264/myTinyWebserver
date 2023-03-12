@@ -20,7 +20,7 @@ chapter 5 中，主要讲述socket的大量接口，对于一些细节（踩过�
     3. ！！！这里请特别注意`connect()`与`accept()`的区别，connect是客户端主动连接服务器的函数，而accept是服务器接受客户端的请求。accept会产生新的fd，而connect还是使用原来与服务器连接的fd。
     4. `connect()`和`accept()`与tcp三次握手建立连接有非常紧密的联系。客户端调用`connect()`时，向服务器发送 SYN 包(first)，服务器调用`accept()`后会在等待连接时阻塞，当客户端发送 SYN 包时，服务器收到后会回复一个 SYN+ACK 包(second)。客户端收到后会再回复一个 ACK 包，此时服务器会接触阻塞状态，accept返回一个与客户端相连的 socket fd，从而建立连接。
 
-- try_get_socket.cpp, 我想尝试使用`getsockname()`和`getpeername()`来获取本端socket地址以及远端socket地址写的demo，发现了一些细节，包括上面提到的`connect()`与`accept()`的注意事项。`getpeername()`必须accept后才有效。感觉这个函数没什么用，毕竟accept就能获取到远端socket地址了。
+- try_get_peername.cpp, 我想尝试使用`getsockname()`和`getpeername()`来获取本端socket地址以及远端socket地址写的demo，发现了一些细节，包括上面提到的`connect()`与`accept()`的注意事项。`getpeername()`必须accept后才有效。感觉这个函数没什么用，毕竟accept就能获取到远端socket地址了。
 
 ## 常用命令
 `netstat -nt | grep 端口号`
