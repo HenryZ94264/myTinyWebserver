@@ -17,6 +17,9 @@ file(GLOB_RECURSE SRC_DIR_LIST "src/*.cpp" "src/*.c")
 # 指定生成目标，引用source_path变量
 add_executable(${PROJECT_NAME} ${SRC_DIR_LIST})
 
+# 将资源拷贝到可执行文件目录下
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/resource DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 # 显式指定编译器
 set(CMAKE_CXX_COMPILER "g++")
 
