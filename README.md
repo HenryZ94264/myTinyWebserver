@@ -13,4 +13,7 @@
 
 应该就能直接debug了，launch.json，tasks.json都配置好了。
 
-每章都会更新相应的README.md，以帮助记忆和理解。
+每章都会更新相应的README.md，以帮助理解，同时记录一些应该注意的点。
+
+[chapter5](src/chapter5/README.md)
+[chapter7](src/chapter7/README.md)
