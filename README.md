@@ -12,3 +12,5 @@
 `mkdir build`
 
 应该就能直接debug了，launch.json，tasks.json都配置好了。
+
+每章都会更新相应的README.md，以帮助记忆和理解。
