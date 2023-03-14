@@ -134,3 +134,11 @@ uid: 1001, euid: 0, suid: 0
 uid: 1001, euid: 1001, suid: 1001
 ```
 此时由于myTinyWebserver具有root的SUID权限，zh执行以后，euid和suid都是root，因此可以成功删除test1。然后通过setuid(getuid())，将进程降权，后续代码则无法使用root的特权。除了root以外的其他用户都无法修改代码，因此是安全的。
+
+
+## 2. 会话
+书中只简单提了一下会话，没有讲清具体的概念。但是书中的一句话引起了我的注意
+> 调用进程将甩开终端
+
+感觉跟tmux很像，先不深究 # TODO
+
