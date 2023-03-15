@@ -12,12 +12,12 @@ chapter 5 中，主要讲述socket的大量接口，对于一些细节（踩过�
 
 - testaccept5_5.cpp, 使用`accept()`函数。`accept()`只是从监听队列中取出连接，而不关心其状态(无论是ESTABLISHED还是CLOSE_WAIT)
     1. 前四个流程与testlisten5_3.cpp一致
-    2. `accept()`接受客户端请求，并建立连接，accept会返回一个**新的fd**,用于服务器与客户端之间的通信(该通信的唯一标识符？)
+    2. `accept()`从监听队列中取出连接，会返回一个**新的fd**,用于表示该连接
 
 - oobsend5_6.cpp和oobrecv5_7.cpp，模拟客户端与服务器之间的TCP带外数据读写：
     1. 客户端：只需要实现`socket()`函数，然后通过`connect()`连接到服务器端。连接成功后通过`send()`函数向服务器发送数据
     2. 服务器端：`socket()`->`bind()`->`listen()`->等待客户端connect->`accept()`，**最后使用`accept()`产生的fd来`recv()`**
-    3. ！！！这里请特别注意`connect()`与`accept()`的区别，connect是客户端主动连接服务器的函数，而accept是服务器接受客户端的请求。accept会产生新的fd，而connect还是使用原来与服务器连接的fd。
+    3. ！！！这里请特别注意`connect()`与`accept()`的区别，connect是客户端主动连接服务器的函数，而accept服务器连接与客户端连接成功后，从队列中取出连接的函数。accept会产生新的fd，而connect还是使用原来与服务器连接的fd。
     4. `connect()`和`accept()`与tcp三次握手建立连接有非常紧密的联系。客户端调用`connect()`时，向服务器发送 SYN 包(first)，服务器收到后会回复一个 SYN+ACK 包(second)。客户端收到后会再回复一个 ACK 包。在完成三次握手前，`accept()`会处于阻塞状态。三次握手成功后，客户端与服务器建立起TCP连接，`accept()`可以获得该连接，返回对应的 fd，从而建立连接。
 
 - try_get_peername.cpp, 我想尝试使用`getsockname()`和`getpeername()`来获取本端socket地址以及远端socket地址写的demo，发现了一些细节，包括上面提到的`connect()`与`accept()`的注意事项。`getpeername()`必须accept后才有效。感觉这个函数没什么用，毕竟accept就能获取到远端socket地址了。
