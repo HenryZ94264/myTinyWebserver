@@ -55,4 +55,5 @@
 // int main()
 // {
 //     daemonize();
+//     daemon(nochdir, noclose); // linux 提供的库函数
 // }
