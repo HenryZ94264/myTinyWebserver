@@ -13,8 +13,7 @@ enum SOCKET_FAILED_TYPE :int
     SOCKET = -1, BIND = -2, LISTEN = -3
 };
 
-int getSocket(const char*, const int&, bool =false);
-
+int getSocket(const char* ip, const int& port, bool reuse =false);
 
 
 #endif
