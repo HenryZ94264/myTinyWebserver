@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8)
 project(myTinyWebserver)
 
 # 查找包
-# find_package()
+find_package(Threads)
 
 # 添加头路径
 include_directories({CMAKE_CURRENT_LIST_DIR}/inc)
@@ -32,4 +32,4 @@ set(CMAKE_CXX_FLAG_RELEASE "$ENV{CXXFLAGS} -03 -Wall")
 set(CMAKE_CXX_FLAG "-Wall")
 
 # 目标链接库， 表示当前目标文件需要链接库
-target_link_libraries(${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT})
